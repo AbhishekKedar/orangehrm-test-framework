@@ -29,3 +29,15 @@ jobs:
 
       - name: Run OrangeHRM tests
         run: mvn clean test -Dheadless=true
+
+      - name: Upload test reports
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: orangehrm-test-results
+          path: |
+            target/surefire-reports/
+            reports/
+            screenshots/
+          if-no-files-found: warn
+          retention-days: 7
