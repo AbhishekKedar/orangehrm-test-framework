@@ -1,0 +1,23 @@
+# Maven-generated files
+target/
+
+# TestNG-generated reports
+test-output/
+
+# Extent Reports
+reports/
+
+# Failure screenshots
+screenshots/
+
+# Log files
+*.log
+
+# Eclipse-generated files
+.classpath
+.project
+.settings/
+
+# IntelliJ-generated files
+.idea/
+*.iml
