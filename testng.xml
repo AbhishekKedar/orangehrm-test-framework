@@ -17,18 +17,20 @@
 
 		<classes>
 			<class name="com.orangehrm.qa.tests.LoginTest" />
+			<class name="com.orangehrm.qa.tests.LogoutTest" />
 		</classes>
 
 	</test>
 
-	<test name="Edge Tests">
+	<test name="Firefox Tests">
 
 		<parameter
 			name="browser"
-			value="edge" />
+			value="firefox" />
 
 		<classes>
 			<class name="com.orangehrm.qa.tests.LoginTest" />
+			<class name="com.orangehrm.qa.tests.LogoutTest" />
 		</classes>
 
 	</test>

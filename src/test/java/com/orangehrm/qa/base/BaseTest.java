@@ -1,9 +1,10 @@
 package com.orangehrm.qa.base;
 
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.edge.EdgeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
@@ -32,7 +33,6 @@ public class BaseTest {
 			if (headless) {
 
 				chromeOptions.addArguments("--headless=new");
-				chromeOptions.addArguments("--window-size=1920,1080");
 				chromeOptions.addArguments("--no-sandbox");
 				chromeOptions.addArguments("--disable-gpu");
 				chromeOptions.addArguments("--disable-dev-shm-usage");
@@ -40,32 +40,27 @@ public class BaseTest {
 
 			DriverManager.setDriver(new ChromeDriver(chromeOptions));
 
-		} else if (browser.equalsIgnoreCase("edge")) {
+		} else if (browser.equalsIgnoreCase("firefox")) {
 
-			EdgeOptions edgeOptions = new EdgeOptions();
+			FirefoxOptions firefoxOptions = new FirefoxOptions();
 
 			if (headless) {
 
-				edgeOptions.addArguments("--headless=new");
-				edgeOptions.addArguments("--window-size=1920,1080");
-				edgeOptions.addArguments("--no-sandbox");
-				edgeOptions.addArguments("--disable-gpu");
-				edgeOptions.addArguments("--disable-dev-shm-usage");
+				firefoxOptions.addArguments("-headless");
 			}
 
-			String edgeProfile = System.getProperty("java.io.tmpdir") + "\\edge-profile-" + System.nanoTime();
-
-			edgeOptions.addArguments("--user-data-dir=" + edgeProfile);
-			edgeOptions.addArguments("--remote-debugging-port=0");
-
-			DriverManager.setDriver(new EdgeDriver(edgeOptions));
+			DriverManager.setDriver(new FirefoxDriver(firefoxOptions));
 
 		} else {
 
 			throw new IllegalArgumentException("Unsupported browser: " + browser);
 		}
 
-		if (!headless) {
+		if (headless) {
+
+			DriverManager.getDriver().manage().window().setSize(new Dimension(1920, 1080));
+
+		} else {
 
 			DriverManager.getDriver().manage().window().maximize();
 		}
