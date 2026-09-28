@@ -33,6 +33,9 @@ public class BaseTest {
 
 				chromeOptions.addArguments("--headless=new");
 				chromeOptions.addArguments("--window-size=1920,1080");
+				chromeOptions.addArguments("--no-sandbox");
+				chromeOptions.addArguments("--disable-gpu");
+				chromeOptions.addArguments("--disable-dev-shm-usage");
 			}
 
 			DriverManager.setDriver(new ChromeDriver(chromeOptions));
@@ -45,6 +48,9 @@ public class BaseTest {
 
 				edgeOptions.addArguments("--headless=new");
 				edgeOptions.addArguments("--window-size=1920,1080");
+				edgeOptions.addArguments("--no-sandbox");
+				edgeOptions.addArguments("--disable-gpu");
+				edgeOptions.addArguments("--disable-dev-shm-usage");
 			}
 
 			DriverManager.setDriver(new EdgeDriver(edgeOptions));
