@@ -53,6 +53,11 @@ public class BaseTest {
 				edgeOptions.addArguments("--disable-dev-shm-usage");
 			}
 
+			String edgeProfile = System.getProperty("java.io.tmpdir") + "\\edge-profile-" + System.nanoTime();
+
+			edgeOptions.addArguments("--user-data-dir=" + edgeProfile);
+			edgeOptions.addArguments("--remote-debugging-port=0");
+
 			DriverManager.setDriver(new EdgeDriver(edgeOptions));
 
 		} else {
