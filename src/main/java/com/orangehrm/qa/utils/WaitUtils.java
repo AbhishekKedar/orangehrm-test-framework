@@ -24,4 +24,11 @@ public class WaitUtils {
 
 		return wait.until(ExpectedConditions.elementToBeClickable(element));
 	}
+
+	public static boolean waitForInvisibility(WebDriver driver, WebElement element) {
+
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(ConfigReader.getIntProperty("timeout")));
+
+		return wait.until(ExpectedConditions.invisibilityOf(element));
+	}
 }
