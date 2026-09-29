@@ -28,6 +28,9 @@ jobs:
           cache: maven
 
       - name: Run OrangeHRM tests
+        env:
+          ADMIN_USERNAME: ${{ secrets.ADMIN_USERNAME }}
+          ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
         run: mvn clean test -Dheadless=true
 
       - name: Upload test reports
