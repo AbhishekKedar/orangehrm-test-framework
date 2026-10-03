@@ -191,6 +191,8 @@ The Jenkins job performs the following operations:
 4. Publishes TestNG test results.
 5. Archives reports and screenshots.
 
+Headless Test Command: mvn clean test -Dheadless=true
+
 ## Author
 
 Abhishek Kedar
