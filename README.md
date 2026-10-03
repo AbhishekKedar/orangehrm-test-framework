@@ -190,6 +190,7 @@ The Jenkins job performs the following operations:
 3. Executes the Maven test suite in headless mode.
 4. Publishes TestNG test results.
 5. Archives reports and screenshots.
+6. Sends the Extent Report by email after every build.
 
 Headless Test Command: mvn clean test -Dheadless=true
 
